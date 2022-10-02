@@ -1,7 +1,10 @@
 ### endpoints:
 
-  POST - https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/
-  GET - https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/
+  POST - https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/product
+  GET - https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/product/{id}
+  PUT - https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/product/{id}
+  DELETE - https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/product/{id}
+  GET - https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/products
 
 ### Deployment
 
@@ -30,8 +33,16 @@ Which should result in response similar to the following (removed `input` conten
 }
 ```
 
-- `curl --url https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/`
-- `curl -X POST -d '{"name":"Gareth Mc Cumskey" "email":"gareth@mccumskey.com"}' --url https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/`
+curl --url https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/product/3321064c-b8d2-4c89-aeee-ec0a93602c76
+
+curl -X POST -d '{"name":"iphoneX", "description":"mobile device", "price":800}' --url https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/product
+
+curl -X GET -d --url https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/product/5503cba0-50cc-4072-a410-c15a21162dd2
+
+curl -X POST -d '{"name":"Gareth Mc Cumskey"}' --url https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/delete
+
+curl -X DELETE --url https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/delete
+
 ### Local development
 
 You can invoke your function locally by using the following command:
