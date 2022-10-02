@@ -11,9 +11,6 @@ const headers = {
 };
 
 const id = event.pathParameters?.id 
-const name = event.pathParameters 
-console.log(id)
-console.log(name)
 
 const output = await dynamoDb.get({
   TableName: tableName,

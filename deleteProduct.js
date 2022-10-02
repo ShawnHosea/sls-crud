@@ -7,16 +7,33 @@ module.exports.deleteProduct = async (event) => {
   const headers = {
     "content-type": "application/json",
   };
-  console.log(event)
-    
-  const productID = event.pathParameters.id;
-  console.log(productID)
+  const id = event.pathParameters?.id 
 
+  const output = await dynamoDb.get({
+    TableName: tableName,
+    Key: {
+      productID: id
+    }
+  }).promise();
+
+  if (!output.Item) {
+    return {
+      statusCode: 404,
+      body: JSON.stringify({error: "not found"})
+    }
+  }
+
+  await dynamoDb.delete({
+    TableName: tableName,
+    Key: {
+      productID: id,
+    }
+  }).promise();
  
   
-      return {
-        statusCode: 200,
-        headers,
-       
-      };
+  return {
+    statusCode: 204,
+    headers,
+    body: ""
+  };
 };
