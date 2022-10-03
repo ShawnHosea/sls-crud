@@ -46,6 +46,7 @@ curl -X POST -d '{"name":"Gareth Mc Cumskey"}' --url https://6hbhuqczsf.execute-
 curl -X DELETE --url https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/product/3321064c-b8d2-4c89-aeee-ec0a93602c76
 
 curl --url https://6hbhuqczsf.execute-api.us-east-1.amazonaws.com/products
+
 ### Local development
 
 You can invoke your function locally by using the following command:

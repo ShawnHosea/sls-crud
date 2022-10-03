@@ -8,8 +8,9 @@ module.exports.updateProduct = async (event) => {
   const headers = {
     "content-type": "application/json",
   };
-  const id = event.pathParameters?.id 
 
+  // Retrives individual item from database using item id
+  const id = event.pathParameters?.id 
   const output = await dynamoDb.get({
     TableName: tableName,
     Key: {
@@ -29,6 +30,7 @@ module.exports.updateProduct = async (event) => {
     productID: id
   };
 
+  // Updates item parameters
     await dynamoDb.put({
       TableName: tableName,
       Item: product

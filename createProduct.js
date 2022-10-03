@@ -5,17 +5,18 @@ const { v4: uuidv4 } = require('uuid');
 
 module.exports.createProduct = async (event) => {
 
-const dynamoDb = new AWS.DynamoDB.DocumentClient();
-const tableName = process.env.DYNAMODB_CUSTOMER_TABLE;
-const headers = {
-  "content-type": "application/json",
-};
-const body = JSON.parse(Buffer.from(event.body, 'base64').toString());
+  const dynamoDb = new AWS.DynamoDB.DocumentClient();
+  const tableName = process.env.DYNAMODB_CUSTOMER_TABLE;
+  const headers = {
+    "content-type": "application/json",
+  };
 
-const product = {
-  ...body,
-  productID: uuidv4()
-};
+  // Creates item in database
+  const body = JSON.parse(Buffer.from(event.body, 'base64').toString());
+  const product = {
+    ...body,
+    productID: uuidv4()
+  };
 
   await dynamoDb.put({
     TableName: tableName,

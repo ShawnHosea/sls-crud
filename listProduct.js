@@ -9,6 +9,7 @@ const headers = {
   "content-type": "application/json",
 };
 
+// Scans database for all items and lists output
 const output = await dynamoDb
     .scan({
       TableName: tableName,

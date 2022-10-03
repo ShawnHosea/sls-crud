@@ -7,6 +7,8 @@ module.exports.deleteProduct = async (event) => {
   const headers = {
     "content-type": "application/json",
   };
+
+  // Gets individual item from database using productID attribute
   const id = event.pathParameters?.id 
 
   const output = await dynamoDb.get({
@@ -16,6 +18,7 @@ module.exports.deleteProduct = async (event) => {
     }
   }).promise();
 
+  // If item does not exist in databse, outputs error
   if (!output.Item) {
     return {
       statusCode: 404,
@@ -23,6 +26,7 @@ module.exports.deleteProduct = async (event) => {
     }
   }
 
+  // If item exists in database, deletes item
   await dynamoDb.delete({
     TableName: tableName,
     Key: {
