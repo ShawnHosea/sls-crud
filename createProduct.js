@@ -12,14 +12,21 @@ module.exports.createProduct = async (event) => {
     // "Access-Control-Allow-Origin": "http://localhost:3000"
 
   };
-  let createdAt = new Date()
-  console.log(createdAt)
+
+  var today = new Date();
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  var dateTime = date+' '+time;
+  console.log(dateTime)
+  let createdDate = JSON.stringify(dateTime)
+  console.log(createdDate);
+
   // Creates item in database
   const body = JSON.parse(event.body);
   const product = {
     ...body,
     productID: uuidv4(),
-    createdAt
+    createdDate
   };
 console.log(body)
 console.log(product)
