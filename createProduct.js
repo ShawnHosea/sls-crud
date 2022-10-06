@@ -9,15 +9,21 @@ module.exports.createProduct = async (event) => {
   const tableName = process.env.DYNAMODB_CUSTOMER_TABLE;
   const headers = {
     "content-type": "application/json",
-  };
+    // "Access-Control-Allow-Origin": "http://localhost:3000"
 
+  };
+  let createdAt = new Date()
+  console.log(createdAt)
   // Creates item in database
-  const body = JSON.parse(Buffer.from(event.body, 'base64').toString());
+  const body = JSON.parse(event.body);
   const product = {
     ...body,
-    productID: uuidv4()
+    productID: uuidv4(),
+    createdAt
   };
-
+console.log(body)
+console.log(product)
+  
   await dynamoDb.put({
     TableName: tableName,
     Item: product
