@@ -9,16 +9,14 @@ module.exports.createProduct = async (event) => {
   const tableName = process.env.DYNAMODB_CUSTOMER_TABLE;
   const headers = {
     "content-type": "application/json",
-    // "Access-Control-Allow-Origin": "http://localhost:3000"
-
+    "Access-Control-Allow-Origin": '*'
   };
 
-  var today = new Date();
-  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  var dateTime = date+' '+time;
-  console.log(dateTime)
-  let createdDate = JSON.stringify(dateTime)
+  let today = new Date();
+  let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  let dateTime = date+' '+time;
+  let createdDate = dateTime
   console.log(createdDate);
 
   // Creates item in database
@@ -28,8 +26,8 @@ module.exports.createProduct = async (event) => {
     productID: uuidv4(),
     createdDate
   };
-console.log(body)
-console.log(product)
+  console.log(body)
+  console.log(product)
   
   await dynamoDb.put({
     TableName: tableName,
