@@ -6,7 +6,8 @@ module.exports.deleteProduct = async (event) => {
   const tableName = process.env.DYNAMODB_CUSTOMER_TABLE;
   const headers = {
     "content-type": "application/json",
-    "Access-Control-Allow-Origin": '*'
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': true,
   };
 
   // Gets individual item from database using productID attribute

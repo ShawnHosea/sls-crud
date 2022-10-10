@@ -7,6 +7,8 @@ provider:
   name: aws
   runtime: nodejs14.x
   provider:
+  httpApi:
+    cors: true
   environment:
     DYNAMODB_CUSTOMER_TABLE: ProductsTable
   iam:

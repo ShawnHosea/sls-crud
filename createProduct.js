@@ -9,7 +9,8 @@ module.exports.createProduct = async (event) => {
   const tableName = process.env.DYNAMODB_CUSTOMER_TABLE;
   const headers = {
     "content-type": "application/json",
-    "Access-Control-Allow-Origin": '*'
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': true,
   };
 
   let today = new Date();

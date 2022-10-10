@@ -8,7 +8,8 @@ module.exports.getProduct = async (event) => {
   const tableName = process.env.DYNAMODB_CUSTOMER_TABLE;
   const headers = {
     "content-type": "application/json",
-    "Access-Control-Allow-Origin": '*'
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': true,
   };
 
   // Gets individual item from database and outputs result
@@ -28,7 +29,7 @@ module.exports.getProduct = async (event) => {
   }
   
   return {
-    statusCode: 200,
+    statusCode: 201,
     headers,
     body: JSON.stringify(output.Item)
   };
